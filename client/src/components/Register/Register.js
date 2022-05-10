@@ -1,11 +1,19 @@
-import React from 'react';
-import RegisterFragment from './RegisterFragment';
+import React, {Component} from 'react';
+import RegisterView from './RegisterView';
 
-const Register = () => {
+class Register extends Component {
 
-    return (
-        <RegisterFragment />
-    );
+    render() {
+        const {
+            setAuth
+        } = this.props;
+
+        return (
+            <RegisterView
+                setAuth={setAuth}
+            />
+        );
+    }
 };
 
 export default Register;

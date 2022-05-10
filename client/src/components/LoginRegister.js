@@ -1,21 +1,16 @@
 import React, {Fragment, useState} from 'react';
 import './LoginRegister.css';
-import {
-  BrowserRouter as Router,
-} from 'react-router-dom';
 import Login from './Login/Login';
 import Register from './Register/Register';
 
-const LoginRegister = () => {
+const LoginRegister = ({setAuth}) => {
   const [addClass, setAddClass] = useState("");
 
   return (
       <Fragment>
         <div className={`container ${addClass}`} id="container">
-          <Router>
-            <Register />
-            <Login />
-          </Router>
+          <Login setAuth={setAuth} />
+          <Register setAuth={setAuth} />
           <div className="overlay-container">
             <div className="overlay">
               <div className="overlay-panel overlay-left">

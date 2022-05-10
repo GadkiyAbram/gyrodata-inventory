@@ -1,11 +1,22 @@
-import React from 'react';
-import LoginFragment from "./LoginFragment";
+import React, {Component} from 'react';
+import LoginView from "./LoginView";
 
-const Login = () => {
+class Login extends Component {
+    constructor(props) {
+        super(props);
+    }
 
-    return (
-        <LoginFragment />
-    );
+    render() {
+        const {
+            setAuth
+        } = this.props;
+
+        return (
+            <LoginView
+                setAuth={setAuth}
+            />
+        );
+    }
 };
 
 export default Login;
