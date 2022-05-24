@@ -8,31 +8,34 @@ const LoginRegister = ({setAuth}) => {
 
   return (
       <Fragment>
-        <div className={`container ${addClass}`} id="container">
-          <Login setAuth={setAuth} />
-          <Register setAuth={setAuth} />
-          <div className="overlay-container">
-            <div className="overlay">
-              <div className="overlay-panel overlay-left">
-                <button
-                    className="ghost"
-                    id="signIn"
-                    onClick={() => setAddClass("")}
-                >
-                  ALREADY WITH US?
-                </button>
-              </div>
-              <div className="overlay-panel overlay-right">
-                <button
-                    className="ghost"
-                    id="signUp"
-                    onClick={() => setAddClass("right-panel-active")}
-                >
-                  NEED AN ACCOUNT?
-                </button>
+        <div className="loginRegister">
+          <div className={`container ${addClass}`} id="container">
+            <Login setAuth={setAuth} />
+            <Register setAuth={setAuth} />
+            <div className="overlay-container">
+              <div className="overlay">
+                <div className="overlay-panel overlay-left">
+                  <button
+                      className="ghost"
+                      id="signIn"
+                      onClick={() => setAddClass("")}
+                  >
+                    ALREADY WITH US?
+                  </button>
+                </div>
+                <div className="overlay-panel overlay-right">
+                  <button
+                      className="ghost"
+                      id="signUp"
+                      onClick={() => setAddClass("right-panel-active")}
+                  >
+                    NEED AN ACCOUNT?
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
       </Fragment>
   );

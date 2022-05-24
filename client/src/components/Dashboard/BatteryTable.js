@@ -15,19 +15,18 @@ import {
     TablePagination,
     TableFooter
 } from '@material-ui/core';
+import { batteries } from '../../DbData/batteryData';
 
 const useStyles = makeStyles((theme) => ({
     table: {
         minWidth: 1200,
     },
     tableContainer: {
-        borderRadius: 5,
-        margin: '10px 10px',
-        maxWidth: "fit-content"
+        borderRadius: 5
     },
     tableHeaderCell: {
         fontWeight: 'bold',
-        backgroundColor: theme.palette.primary.dark,
+        backgroundColor: '#cf3213',
         color: theme.palette.getContrastText(theme.palette.primary.dark)
     },
     avatar: {
@@ -36,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     },
     name: {
         fontWeight: 'bold',
-        color: theme.palette.secondary.dark
+        color: '#4a4847'
     },
     status: {
         fontWeight: 'bold',
@@ -46,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 8,
         padding: '3px 10px',
         display: 'inline-block'
+    },
+    container: {
+        color: 'textSecondary',
+        margin: '0px 5px'
     }
 }));
 
@@ -72,42 +75,43 @@ const BatteryTable = () => {
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell className={classes.tableHeaderCell}>User Info</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Job Info</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Joining Date</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Status</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Battery Info</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Transfer Info</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Arrived Date</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Location</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {USERS.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+                    {batteries.map((row) => (
                         <TableRow key={row.name}>
                             <TableCell>
                                 <Grid container>
                                     <Grid item lg={2}>
-                                        <Avatar alt={row.name} src='.' className={classes.avatar}/>
+                                        <Avatar
+                                            alt={row.condition} src='.'
+                                            className={classes.avatar}
+                                            style={{
+                                                backgroundColor:
+                                                    ((row.condition === 'new' && 'green') ||
+                                                        (row.condition === 'used' && 'orange'))
+                                            }}
+                                        />
                                     </Grid>
                                     <Grid item lg={10}>
-                                        <Typography className={classes.name}>{row.name}</Typography>
-                                        <Typography color="textSecondary" variant="body2">{row.email}</Typography>
-                                        <Typography color="textSecondary" variant="body2">{row.phone}</Typography>
+                                        <Typography className={classes.name}>{row.serialOne}</Typography>
+                                        <Typography color="textSecondary" variant="body2">{row.serialTwo}</Typography>
+                                        <Typography color="textSecondary" variant="body2">{row.serialThree}</Typography>
                                     </Grid>
                                 </Grid>
                             </TableCell>
                             <TableCell>
-                                <Typography color="primary" variant="subtitle2">{row.jobTitle}</Typography>
-                                <Typography color="textSecondary" variant="body2">{row.company}</Typography>
+                                <Typography color="primary" variant="subtitle2">{row.invoice}</Typography>
+                                <Typography color="textSecondary" variant="body2">{row.ccd}</Typography>
                             </TableCell>
-                            <TableCell>{row.joinDate}</TableCell>
+                            <TableCell>{row.arrived}</TableCell>
                             <TableCell>
-                                <Typography
-                                    className={classes.status}
-                                    style={{
-                                        backgroundColor:
-                                            ((row.status === 'Active' && 'green') ||
-                                                (row.status === 'Pending' && 'blue') ||
-                                                (row.status === 'Blocked' && 'orange'))
-                                    }}
-                                >{row.status}</Typography>
+                                <Typography className={classes.status}>{row.location}</Typography>
+                                <Typography className={classes.container} variant="body2">{row.container}</Typography>
                             </TableCell>
                         </TableRow>
                     ))}
