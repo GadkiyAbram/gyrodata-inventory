@@ -2,9 +2,9 @@ import {
     action,
     computed,
     decorate,
-    observable
+    observable, toJS
 } from 'mobx';
-import Request from '../utils/Request';
+import axios from 'axios';
 
 class BatteryStore {
     batteries = [];
@@ -17,16 +17,20 @@ class BatteryStore {
     }
 
     getBatteryData = async() => {
-        const response = await new Request().get(
-            'http://localhost:5000/batteries/getall'
-        );
+        try {
+            const response = await axios.get(
+                'http://localhost:5000/batteries/getall/'
+            );
+            this.setBatteries(response?.data);
 
-        this.setBatteries(response);
+        } catch (err) {
+            console.log(err);
+        }
     }
 }
 
 BatteryStore = decorate(BatteryStore, {
-    batteries: observable
+    batteries: observable,
 });
 
 export default new BatteryStore();

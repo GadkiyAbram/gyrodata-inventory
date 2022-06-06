@@ -16,6 +16,7 @@ import {
     TableFooter, Button
 } from '@material-ui/core';
 import { batteries } from '../../DbData/batteryData';
+import batteryStore from '../../stores/BatteryStore';
 
 const useStyles = makeStyles((theme) => ({
     table: {
@@ -72,7 +73,7 @@ const BatteryTable = () => {
 
     return (
         <div>
-            <Button onClick={getAllBatteries}>See All Batteries</Button>
+            <Button onClick={batteryStore.getBatteryData}>See All Batteries</Button>
             <TableContainer component={Paper} className={classes.tableContainer}>
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
@@ -84,8 +85,9 @@ const BatteryTable = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {batteries.map((row) => (
-                            <TableRow key={row.name}>
+                        {
+                            batteryStore.batteries.map((row) => (
+                            <TableRow key={row.id}>
                                 <TableCell>
                                     <Grid container>
                                         <Grid item lg={2}>
@@ -94,15 +96,15 @@ const BatteryTable = () => {
                                                 className={classes.avatar}
                                                 style={{
                                                     backgroundColor:
-                                                        ((row.condition === 'new' && 'green') ||
-                                                            (row.condition === 'used' && 'orange'))
+                                                        ((row.condition === 1 && 'green') ||
+                                                            (row.condition === 0 && 'orange'))
                                                 }}
                                             />
                                         </Grid>
                                         <Grid item lg={10}>
-                                            <Typography className={classes.name}>{row.serialOne}</Typography>
-                                            <Typography color="textSecondary" variant="body2">{row.serialTwo}</Typography>
-                                            <Typography color="textSecondary" variant="body2">{row.serialThree}</Typography>
+                                            <Typography className={classes.name}>{row.serial_number_one}</Typography>
+                                            <Typography color="textSecondary" variant="body2">{row.serial_number_two}</Typography>
+                                            <Typography color="textSecondary" variant="body2">{row.serial_number_three}</Typography>
                                         </Grid>
                                     </Grid>
                                 </TableCell>
@@ -116,7 +118,8 @@ const BatteryTable = () => {
                                     <Typography className={classes.container} variant="body2">{row.container}</Typography>
                                 </TableCell>
                             </TableRow>
-                        ))}
+                            ))
+                        }
                     </TableBody>
                 </Table>
             </TableContainer>

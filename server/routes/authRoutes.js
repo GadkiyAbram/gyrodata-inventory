@@ -76,6 +76,17 @@ router.post('/verify', authorize, async (req, res) => {
         console.log(err.message);
         res.status(500).send('Server error');
     }
-})
+});
+
+router.get('/getall', async (req, res) => {
+    try {
+        const batteries = await pool.query('SELECT * FROM batteries');
+
+        res.json({data: batteries});
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
 
 module.exports = router;
