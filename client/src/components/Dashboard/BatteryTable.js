@@ -13,7 +13,7 @@ import {
     Grid,
     Typography,
     TablePagination,
-    TableFooter
+    TableFooter, Button
 } from '@material-ui/core';
 import { batteries } from '../../DbData/batteryData';
 
@@ -71,53 +71,56 @@ const BatteryTable = () => {
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     return (
-        <TableContainer component={Paper} className={classes.tableContainer}>
-            <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell className={classes.tableHeaderCell}>Battery Info</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Transfer Info</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Arrived Date</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Location</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {batteries.map((row) => (
-                        <TableRow key={row.name}>
-                            <TableCell>
-                                <Grid container>
-                                    <Grid item lg={2}>
-                                        <Avatar
-                                            alt={row.condition} src='.'
-                                            className={classes.avatar}
-                                            style={{
-                                                backgroundColor:
-                                                    ((row.condition === 'new' && 'green') ||
-                                                        (row.condition === 'used' && 'orange'))
-                                            }}
-                                        />
-                                    </Grid>
-                                    <Grid item lg={10}>
-                                        <Typography className={classes.name}>{row.serialOne}</Typography>
-                                        <Typography color="textSecondary" variant="body2">{row.serialTwo}</Typography>
-                                        <Typography color="textSecondary" variant="body2">{row.serialThree}</Typography>
-                                    </Grid>
-                                </Grid>
-                            </TableCell>
-                            <TableCell>
-                                <Typography color="primary" variant="subtitle2">{row.invoice}</Typography>
-                                <Typography color="textSecondary" variant="body2">{row.ccd}</Typography>
-                            </TableCell>
-                            <TableCell>{row.arrived}</TableCell>
-                            <TableCell>
-                                <Typography className={classes.status}>{row.location}</Typography>
-                                <Typography className={classes.container} variant="body2">{row.container}</Typography>
-                            </TableCell>
+        <div>
+            <Button onClick={getAllBatteries}>See All Batteries</Button>
+            <TableContainer component={Paper} className={classes.tableContainer}>
+                <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell className={classes.tableHeaderCell}>Battery Info</TableCell>
+                            <TableCell className={classes.tableHeaderCell}>Transfer Info</TableCell>
+                            <TableCell className={classes.tableHeaderCell}>Arrived Date</TableCell>
+                            <TableCell className={classes.tableHeaderCell}>Location</TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {batteries.map((row) => (
+                            <TableRow key={row.name}>
+                                <TableCell>
+                                    <Grid container>
+                                        <Grid item lg={2}>
+                                            <Avatar
+                                                alt={row.condition} src='.'
+                                                className={classes.avatar}
+                                                style={{
+                                                    backgroundColor:
+                                                        ((row.condition === 'new' && 'green') ||
+                                                            (row.condition === 'used' && 'orange'))
+                                                }}
+                                            />
+                                        </Grid>
+                                        <Grid item lg={10}>
+                                            <Typography className={classes.name}>{row.serialOne}</Typography>
+                                            <Typography color="textSecondary" variant="body2">{row.serialTwo}</Typography>
+                                            <Typography color="textSecondary" variant="body2">{row.serialThree}</Typography>
+                                        </Grid>
+                                    </Grid>
+                                </TableCell>
+                                <TableCell>
+                                    <Typography color="primary" variant="subtitle2">{row.invoice}</Typography>
+                                    <Typography color="textSecondary" variant="body2">{row.ccd}</Typography>
+                                </TableCell>
+                                <TableCell>{row.arrived}</TableCell>
+                                <TableCell>
+                                    <Typography className={classes.status}>{row.location}</Typography>
+                                    <Typography className={classes.container} variant="body2">{row.container}</Typography>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </div>
     );
 }
 
