@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import BatteryTable from "./BatteryTable";
+import BatteryPage from '../Batteries/BatteryPage';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class Dashboard extends Component {
         return (
             <div>
                 <h1>Dashboard</h1>
-                <BatteryTable />
+                <BatteryPage />
                 <button
                     onClick={() => setAuth(false)}
                 >

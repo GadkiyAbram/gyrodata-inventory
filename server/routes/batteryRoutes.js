@@ -1,12 +1,19 @@
 const batteryRouter = require('express').Router();
-const pool = require('../db');
+const {knexDb} = require('../db');
+const {DB_TABLES} = require('../constants');
 
-//getting all batteries data
 batteryRouter.get('/getall', async (req, res) => {
     try {
-        const {rows} = await pool.query('SELECT * FROM batteries');
-
-        res.json(rows);
+        knexDb.select('*')
+            .from(DB_TABLES.TABLE_BATTERIES)
+            .orderBy('id')
+            .then(batteries => {
+                const totalRows = batteries.length;
+                res.json({
+                    data: batteries.splice(req.query.offset, req.query.limit),
+                    total: totalRows
+                });
+            });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');

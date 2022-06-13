@@ -1,4 +1,6 @@
-const Pool = require('pg').Pool
+const Pool = require('pg').Pool;
+const knex = require('knex');
+const knexfile = require('./knexfile');
 
 const pool = new Pool({
     user: 'postgres',
@@ -8,4 +10,6 @@ const pool = new Pool({
     database: 'gyrodata_tracker'
 });
 
-module.exports = pool;
+const knexDb = knex(knexfile.development);
+
+module.exports = {pool, knexDb};
