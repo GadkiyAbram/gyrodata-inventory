@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PaginationView from "./PaginationView";
+import PaginationView from './PaginationView';
 
 class Pagination extends Component {
     constructor(props) {

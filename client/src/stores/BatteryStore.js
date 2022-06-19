@@ -32,6 +32,25 @@ class BatteryStore {
         this.total = total;
     }
 
+    updateCondition = async(id, condition) => {
+        const params = {
+            id: id,
+            condition: condition
+        };
+
+        try {
+            await axios.put(
+                'http://localhost:5000/batteries/updateCondition/',
+                { params: params
+                });
+
+            this.getBatteryData();
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     getBatteryData = async() => {
         try {
             const response = await axios.get(

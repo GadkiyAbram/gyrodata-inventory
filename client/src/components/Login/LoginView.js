@@ -3,7 +3,6 @@ import React,
     Fragment,
     useState
 } from 'react';
-import {toast} from 'react-toastify';
 
 const LoginView = ({setAuth}) => {
 
@@ -36,10 +35,8 @@ const LoginView = ({setAuth}) => {
             if (result.token) {
                 localStorage.setItem('token', result.token);
                 setAuth(true);
-                toast.success('Logged in Successfully');
             } else {
                 setAuth(false);
-                toast.error(result);
             }
         } catch (err) {
             console.error(err.message);

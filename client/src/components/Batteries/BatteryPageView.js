@@ -1,6 +1,4 @@
-import faker from '@faker-js/faker';
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
 import {
     Table,
     TableBody,
@@ -13,59 +11,13 @@ import {
     Grid,
     Typography,
     TablePagination,
-    TableFooter, Button
+    TableFooter,
+    Button
 } from '@material-ui/core';
-import ReactPaginate from 'react-paginate';
-import '../Batteries/styles.css';
-import Pagination from "../shreadComponents/Tables/Pagination/Pagination";
-
-const useStyles = makeStyles((theme) => ({
-    table: {
-        minWidth: 1200,
-    },
-    tableContainer: {
-        borderRadius: 5
-    },
-    tableHeaderCell: {
-        fontWeight: 'bold',
-        backgroundColor: '#cf3213',
-        color: theme.palette.getContrastText(theme.palette.primary.dark)
-    },
-    avatar: {
-        backgroundColor: theme.palette.primary.light,
-        color: theme.palette.getContrastText(theme.palette.primary.light)
-    },
-    name: {
-        fontWeight: 'bold',
-        color: '#4a4847'
-    },
-    status: {
-        fontWeight: 'bold',
-        fontSize: '0.75rem',
-        color: 'white',
-        backgroundColor: 'grey',
-        borderRadius: 8,
-        padding: '3px 10px',
-        display: 'inline-block'
-    },
-    container: {
-        color: 'textSecondary',
-        margin: '0px 5px'
-    }
-}));
-
-let USERS = [], STATUSES = ['Active', 'Pending', 'Blocked'];
-for(let i=0;i<14;i++) {
-    USERS[i] = {
-        name: faker.name.findName(),
-        email: faker.internet.email(),
-        phone: faker.phone.phoneNumber(),
-        jobTitle: faker.name.jobTitle(),
-        company: faker.company.companyName(),
-        joinDate: faker.date.past().toLocaleDateString('en-US'),
-        status: STATUSES[Math.floor(Math.random() * STATUSES.length)]
-    }
-}
+import '../shreadComponents/Tables/Pagination/styles.scss';
+import Pagination from '../shreadComponents/Tables/Pagination/Pagination';
+import useStyles from './styles';
+import BatteryConditionPage from './components/BatteryConditionPage';
 
 const BatteryPageView = (props) => {
     const {
@@ -73,7 +25,8 @@ const BatteryPageView = (props) => {
         getData,
         limit,
         setOffset,
-        total
+        total,
+        updateCondition
     } = props;
 
     const classes = useStyles();
@@ -103,15 +56,7 @@ const BatteryPageView = (props) => {
                                     <TableCell>
                                         <Grid container>
                                             <Grid item lg={2}>
-                                                <Avatar
-                                                    alt={row.condition} src='.'
-                                                    className={classes.avatar}
-                                                    style={{
-                                                        backgroundColor:
-                                                            ((row.condition === 1 && 'green') ||
-                                                                (row.condition === 0 && 'orange'))
-                                                    }}
-                                                />
+                                                <BatteryConditionPage row={row} updateCondition={updateCondition} />
                                             </Grid>
                                             <Grid item lg={10}>
                                                 <Typography className={classes.name}>{row.serial_number_one}</Typography>

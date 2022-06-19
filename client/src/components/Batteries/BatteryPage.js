@@ -14,13 +14,15 @@ class BatteryPage extends Component {
             getBatteryData,
             limit,
             setOffset,
-            total
+            total,
+            updateCondition
         } = batteryStore;
 
         return (
             <BatteryPageView
                 batteryData={batteries}
                 getData={getBatteryData}
+                updateCondition={updateCondition}
                 setOffset={setOffset}
                 limit={limit}
                 total={total}

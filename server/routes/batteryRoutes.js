@@ -20,4 +20,24 @@ batteryRouter.get('/getall', async (req, res) => {
     }
 });
 
+batteryRouter.put('/updateCondition', async (req, res) => {
+
+    const id = req.body.params.id;
+    const condition = req.body.params.condition;
+
+    console.log(id);
+
+    try {
+        knexDb(DB_TABLES.TABLE_BATTERIES)
+            .update({condition: condition})
+            .where('id', id)
+            .then((rows) => {
+                console.log(rows);
+            })
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
 module.exports = batteryRouter;
