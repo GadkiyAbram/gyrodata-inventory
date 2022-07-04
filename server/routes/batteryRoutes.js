@@ -23,14 +23,15 @@ batteryRouter.get('/getall', async (req, res) => {
 batteryRouter.put('/updateCondition', async (req, res) => {
 
     const id = req.body.params.id;
-    const condition = req.body.params.condition;
+    const condition = Number(req.body.params.condition);
 
-    console.log(id);
+    console.log(`battery_id = ${id}`);
+    console.log(`condition = ${condition}`);
 
     try {
         knexDb(DB_TABLES.TABLE_BATTERIES)
+            .where({id: id})
             .update({condition: condition})
-            .where('id', id)
             .then((rows) => {
                 console.log(rows);
             })

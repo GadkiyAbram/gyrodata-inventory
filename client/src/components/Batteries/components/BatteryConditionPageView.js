@@ -12,7 +12,8 @@ const BatteryConditionPageView = (props) => {
     const [currentCondition, setCurrentCondition] = useState(row.condition);
 
     const handleCondition = (id) => {
-        setCurrentCondition(prevCondition => !prevCondition);
+        console.log(currentCondition);
+        setCurrentCondition((prevCondition) => Number(!prevCondition));
         console.log(currentCondition);
         updateCondition(id, currentCondition);
     }

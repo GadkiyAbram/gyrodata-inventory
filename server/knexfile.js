@@ -4,7 +4,7 @@ const knexfile = {
         connection: {
             database: 'gyrodata_tracker',
             user: 'postgres',
-            password: 'admin',
+            password: '12345',
         },
         pool: {
             min: 3,

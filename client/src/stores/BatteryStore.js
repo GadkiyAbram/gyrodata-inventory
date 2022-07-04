@@ -44,7 +44,7 @@ class BatteryStore {
                 { params: params
                 });
 
-            this.getBatteryData();
+            await this.getBatteryData();
 
         } catch (err) {
             console.log(err);
