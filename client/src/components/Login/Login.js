@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import LoginView from "./LoginView";
+import LoginView from './LoginView';
 
 class Login extends Component {
     constructor(props) {
@@ -7,14 +7,8 @@ class Login extends Component {
     }
 
     render() {
-        const {
-            setAuth
-        } = this.props;
-
         return (
-            <LoginView
-                setAuth={setAuth}
-            />
+            <LoginView />
         );
     }
 };

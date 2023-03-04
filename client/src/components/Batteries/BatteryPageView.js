@@ -17,7 +17,8 @@ import {
 import '../shreadComponents/Tables/Pagination/styles.scss';
 import Pagination from '../shreadComponents/Tables/Pagination/Pagination';
 import useStyles from './styles';
-import BatteryConditionPage from './components/BatteryConditionPage';
+import BatteryConditionPage from './components/Fields/Condition/BatteryConditionPage';
+import BatteryEdit from './components/Actions/Edit';
 
 const BatteryPageView = (props) => {
     const {
@@ -47,6 +48,7 @@ const BatteryPageView = (props) => {
                             <TableCell className={classes.tableHeaderCell}>Transfer Info</TableCell>
                             <TableCell className={classes.tableHeaderCell}>Arrived Date</TableCell>
                             <TableCell className={classes.tableHeaderCell}>Location</TableCell>
+                            <TableCell className={classes.tableHeaderCell}>Actions</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -59,9 +61,9 @@ const BatteryPageView = (props) => {
                                                 <BatteryConditionPage row={row} updateCondition={updateCondition} />
                                             </Grid>
                                             <Grid item lg={10}>
-                                                <Typography className={classes.name}>{row.serial_number_one}</Typography>
-                                                <Typography color="textSecondary" variant="body2">{row.serial_number_two}</Typography>
-                                                <Typography color="textSecondary" variant="body2">{row.serial_number_three}</Typography>
+                                                <Typography className={classes.name}>{row.serialOne}</Typography>
+                                                <Typography color="textSecondary" variant="body2">{row.serialTwo}</Typography>
+                                                <Typography color="textSecondary" variant="body2">{row.serialThree}</Typography>
                                             </Grid>
                                         </Grid>
                                     </TableCell>
@@ -73,6 +75,9 @@ const BatteryPageView = (props) => {
                                     <TableCell>
                                         <Typography className={classes.status}>{row.location}</Typography>
                                         <Typography className={classes.container} variant="body2">{row.container}</Typography>
+                                    </TableCell>
+                                    <TableCell>
+                                        <BatteryEdit />
                                     </TableCell>
                                 </TableRow>
                             ))

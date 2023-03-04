@@ -18,11 +18,12 @@ const RegisterView = ({setAuth}) => {
 
         try {
             const body = {name, email, password};
+            console.log(body);
             const response = await fetch(
                 'http://localhost:5000/auth/register', {
                     method: 'POST',
                     headers: {
-                        "Content-type": "application/json"
+                        'Content-type': 'application/json'
                     },
                     body: JSON.stringify(body)
                 }

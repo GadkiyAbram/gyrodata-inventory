@@ -1,18 +1,22 @@
 import {
     action,
-    computed,
-    decorate,
-    observable, reaction, toJS
+    makeAutoObservable, makeObservable,
+    observable,
+    reaction
 } from 'mobx';
 import axios from 'axios';
+import {batteries} from "../DbData/batteryData";
 
 class BatteryStore {
     batteries = [];
     total = 0;
-    limit = 5;
+    limit = 10;
     offset = 0;
 
     constructor() {
+        makeAutoObservable(this, {
+            batteries: observable
+        });
         this.getBatteryData();
 
         reaction(() => this.offset, () => {
@@ -34,9 +38,11 @@ class BatteryStore {
 
     updateCondition = async(id, condition) => {
         const params = {
-            id: id,
-            condition: condition
+            serialOne: id,
+            condition
         };
+
+        console.log(params);
 
         try {
             await axios.put(
@@ -64,17 +70,11 @@ class BatteryStore {
             this.setBatteries(response?.data.data);
             this.setTotalRows(response?.data.total);
 
+
         } catch (err) {
             console.log(err);
         }
     }
 }
-
-BatteryStore = decorate(BatteryStore, {
-    batteries: observable,
-    limit: observable,
-    offset: observable,
-    total: observable
-});
 
 export default new BatteryStore();

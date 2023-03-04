@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import useStyles from '../../styles';
-import {condition} from '../../../../enums/batteries';
+import useStyles from '../../../styles';
+import {condition} from '../../../../../enums/batteries';
 
 const BatteryConditionPageView = (props) => {
     const classes = useStyles();

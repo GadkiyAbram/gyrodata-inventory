@@ -1,18 +1,23 @@
-import React, {Fragment, useEffect, useState} from 'react';
+'use strict'
+
+import React, {Fragment, useContext, useEffect, useState} from 'react';
 import LoginRegister from './components/LoginRegister';
 import {
-    Redirect,
+    Navigate,
     Route,
     BrowserRouter as Router,
-    Switch
+    Routes, useNavigate, redirect
 } from 'react-router-dom';
 import Dashboard from './components/Dashboard/Dashboard';
+import {AuthContext} from './index';
+import {inject, observer} from "mobx-react";
 
-function App() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const setAuth = (boolean) => {
-        setIsAuthenticated(boolean);
-    }
+const App = ({authStore}) => {
+    const navigate = useNavigate();
+
+    // const {authStore} = useContext(AuthContext);
+
+    console.log(`APP: ${authStore.authorized}`);
 
     const checkAuthenticated = async () => {
         try {
@@ -23,39 +28,57 @@ function App() {
 
             const parseRes = await res.json();
 
-            parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
-            console.log(parseRes);
+            parseRes === true ? authStore.setAuth(true) : authStore.setAuth(false);
         } catch (err) {
             console.error(err.message);
         }
     };
 
+    // const redirectD = (authorized) => {
+    //   if (!authorized) {
+    //       return <LoginRegister setAuth={authStore.setAuth}/>
+    //   } else {
+    //       return <Navigate to={{pathname: '/dashboard'}} />
+    //   }
+    // };
+    //
+    // const redirectL = (authorized) => {
+    //     if (authorized) {
+    //         return <Dashboard setAuth={authStore.setAuth} logout={authStore.logout} />
+    //     } else {
+    //         return <Navigate to={'/'} />
+    //     }
+    // };
+
     useEffect(() => {
-        checkAuthenticated();
-    }, []);
+        if (!localStorage.getItem('token')) {
+            authStore.setAuth(false);
+            navigate('/login')
+        } else {
+            authStore.setAuth(true);
+            navigate('/dashboard')
+        }
+        // checkAuthenticated();
+    }, [authStore]);
 
-      return (
-          <Fragment>
-              <Router>
-                  <Route
-                      exact
-                      path='/'
-                      render={props => !isAuthenticated ? (
-                          <LoginRegister setAuth={setAuth}/>
-                      ) : (<Redirect to='/dashboard' />)
-                      }
-                  />
-                  <Route
-                      exact
-                      path='/dashboard'
-                      render={props => isAuthenticated ? (
-                          <Dashboard setAuth={setAuth} />
-                      ) : (<Redirect to='/' />)
-                      }
-                  />
-              </Router>
-          </Fragment>
-      );
-}
+    return (
+        <Fragment>
+            <Routes>
+                <Route
+                    index element={<LoginRegister/>}
+                />
+                <Route
+                    exact path='/login'
+                    element={authStore.authorized ? <Dashboard /> : <LoginRegister />}
+                />
+                <Route
+                    exact
+                    path='/dashboard'
+                    element={authStore.authorized ? <Dashboard /> : <Navigate to={'/login'} />}
+                />
+            </Routes>
+        </Fragment>
+    );
+};
 
-export default App;
+export default inject('authStore')(observer(App));

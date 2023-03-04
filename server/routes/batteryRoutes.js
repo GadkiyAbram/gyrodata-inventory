@@ -6,7 +6,7 @@ batteryRouter.get('/getall', async (req, res) => {
     try {
         knexDb.select('*')
             .from(DB_TABLES.TABLE_BATTERIES)
-            .orderBy('id')
+            .orderBy('serialOne')
             .then(batteries => {
                 const totalRows = batteries.length;
                 res.json({
@@ -22,15 +22,15 @@ batteryRouter.get('/getall', async (req, res) => {
 
 batteryRouter.put('/updateCondition', async (req, res) => {
 
-    const id = req.body.params.id;
+    const id = req.body.params.serialOne;
     const condition = Number(req.body.params.condition);
 
-    console.log(`battery_id = ${id}`);
+    console.log(`serialOne = ${id}`);
     console.log(`condition = ${condition}`);
 
     try {
         knexDb(DB_TABLES.TABLE_BATTERIES)
-            .where({id: id})
+            .where({serialOne: id})
             .update({condition: condition})
             .then((rows) => {
                 console.log(rows);
