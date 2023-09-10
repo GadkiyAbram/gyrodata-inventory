@@ -1,51 +1,13 @@
-import React,
-{
-    Fragment, useContext,
-    useState
-} from 'react';
-import {inject, observer} from "mobx-react";
-import {AuthContext} from "../../index";
+'use strict';
+
+import React, {Fragment} from 'react';
+import {inject, observer} from 'mobx-react';
 
 const LoginView = ({authStore}) => {
-
-    // const {authStore} = useContext(AuthContext);
-    //
-    // const [inputs, setInputs] = useState({
-    //     email: '',
-    //     password: ''
-    // });
-
-        // const {email, password} = inputs;
-        // const onChange = (event) => {
-        //     setInputs({...inputs, [event.target.name] : event.target.value})
-        // }
-
     const onSubmitForm = async (e) => {
         e.preventDefault();
         try {
             await authStore.login();
-
-            // const body = { email, password };
-            // const response = await fetch(
-            //     'http://localhost:5000/auth/login',
-            //     {
-            //         method: 'POST',
-            //         headers: {
-            //             'Content-type': 'application/json'
-            //         },
-            //         body: JSON.stringify(body)
-            //     }
-            // );
-
-            // const result = await response.json();
-
-            // console.log(await result.data.token);
-            // if (result.data.token) {
-            //     localStorage.setItem('token', result.data.token);
-            //     authStore.setAuth(true);
-            // } else {
-            //     authStore.setAuth(false);
-            // }
         } catch (err) {
             console.error(err.message);
         }

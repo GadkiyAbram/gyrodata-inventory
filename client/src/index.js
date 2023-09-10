@@ -5,27 +5,16 @@ import AuthStore from './stores/AuthStore';
 import {
     BrowserRouter as Router
 } from 'react-router-dom'
-import {Provider} from 'mobx-react';
+import {Provider, MobXProviderContext} from 'mobx-react';
 
 const authStore = new AuthStore();
 
-export const AuthContext = createContext({authStore});
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//       <Router>
-//           <AuthContext.Provider value={{authStore}}>
-//               <App />
-//           </AuthContext.Provider>
-//       </Router>
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
+console.log(authStore);
 
 ReactDOM.render(
     <React.StrictMode>
         <Router>
-            <Provider authStore={new AuthStore()} >
+            <Provider authStore={authStore} >
                 <App />
             </Provider>
         </Router>

@@ -53,8 +53,8 @@ const BatteryPageView = (props) => {
                     </TableHead>
                     <TableBody>
                         {
-                            batteryData.map((row) => (
-                                <TableRow key={row.id}>
+                            batteryData.map((row, index) => (
+                                <TableRow key={index}>
                                     <TableCell>
                                         <Grid container>
                                             <Grid item lg={2}>
