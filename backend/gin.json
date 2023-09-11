@@ -1,0 +1,6 @@
+{
+  "immediate": true,
+  "all": true,
+  "i": true,
+  "buildArgs": ["-ldflags", "-w"]
+}

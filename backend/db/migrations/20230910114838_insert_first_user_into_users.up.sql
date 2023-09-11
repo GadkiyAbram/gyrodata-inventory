@@ -1,0 +1,1 @@
+delete from public.users where email = 'alex-abram@bk.ru'

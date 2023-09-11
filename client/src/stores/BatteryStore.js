@@ -72,6 +72,7 @@ class BatteryStore {
 
 
         } catch (err) {
+            this.setBatteries(batteries);
             console.log(err);
         }
     }

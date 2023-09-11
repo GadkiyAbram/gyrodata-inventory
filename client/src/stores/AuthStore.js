@@ -18,15 +18,15 @@ class AuthStore {
     constructor() {
         makeAutoObservable(this,
             {
-            authorized: observable,
-            user: observable,
-            email: observable,
-            password: observable,
-            setAuth: action,
-            setUser: action,
-            setEmail: action,
-            setPassword: action
-        }
+                authorized: observable,
+                user: observable,
+                email: observable,
+                password: observable,
+                setAuth: action,
+                setUser: action,
+                setEmail: action,
+                setPassword: action
+            }
         );
     }
 
@@ -49,22 +49,15 @@ class AuthStore {
     }
 
     async login() {
-        console.log('login called');
-
-        console.log(this);
-        // this.setAuth(true);
         try {
-            // console.log(this.email, this.password);
-            console.log('alex-abram@bk.ru', 'admin');
-            const response = await AuthService.login('alex-abram@bk.ru', 'admin');
+            const response = await AuthService.login(this.email, this.password);
+
+            console.log(response);
 
             if (response.data.token) {
-                console.log(`TOKEN RECEIVED: ${response.data.token}`)
                 localStorage.setItem('token', response.data.token);
                 this.setPassword('ssss')
-                console.log(this.password);
                 this.setAuth(true);
-                // this.setAuth(true);
                 this.setUser(response.data);
             }
         } catch (err) {
