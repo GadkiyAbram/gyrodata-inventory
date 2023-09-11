@@ -3,11 +3,12 @@ package models
 import (
 	"fmt"
 	"github.com/dgrijalva/jwt-go"
+	"os"
 	"time"
 )
 
 var (
-	jwtSecret = []byte("my-secret-key")
+	jwtSecret = []byte(os.Getenv("JWT_SECRET"))
 )
 
 // Claims represents the JWT claims.
