@@ -1,1 +1,2 @@
-delete from public.users where email = 'alex-abram@bk.ru'
+INSERT INTO "gyrodata-db".public.users (email, password, name, lastname)
+values ('alex-abram@bk.ru', 'admin', 'Aleksandr', 'Abramovskii')

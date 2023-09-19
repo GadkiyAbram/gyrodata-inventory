@@ -1,0 +1,1 @@
+delete from public.batteries where serialOne = 'S1-0331-0652';

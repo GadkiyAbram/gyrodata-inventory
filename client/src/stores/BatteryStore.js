@@ -6,6 +6,7 @@ import {
 } from 'mobx';
 import axios from 'axios';
 import {batteries} from "../DbData/batteryData";
+import BatteriesService from '../services/BatteriesService';
 
 class BatteryStore {
     batteries = [];
@@ -59,16 +60,12 @@ class BatteryStore {
 
     getBatteryData = async() => {
         try {
-            const response = await axios.get(
-                'http://localhost:5000/batteries/getall/',
-                { params:
-                        {
-                            offset: this.offset,
-                            limit: this.limit
-                        }
-                    });
-            this.setBatteries(response?.data.data);
-            this.setTotalRows(response?.data.total);
+            const response = await BatteriesService.batteriesAll({
+                limit: 10
+            });
+
+            console.log(response?.data);
+            this.setBatteries(response?.data);
 
 
         } catch (err) {
@@ -76,6 +73,26 @@ class BatteryStore {
             console.log(err);
         }
     }
+
+    // getBatteryData = async() => {
+    //     try {
+    //         const response = await axios.get(
+    //             'http://localhost:8081/batteries/getall/',
+    //             { params:
+    //                     {
+    //                         offset: this.offset,
+    //                         limit: this.limit
+    //                     }
+    //                 });
+    //         this.setBatteries(response?.data.data);
+    //         this.setTotalRows(response?.data.total);
+
+
+    //     } catch (err) {
+    //         this.setBatteries(batteries);
+    //         console.log(err);
+    //     }
+    // }
 }
 
 export default new BatteryStore();

@@ -1,7 +1,8 @@
 package Router
 
 import (
-	httpMethods "auth-service-golang/const"
+	"auth-service-golang/const/httpMethods"
+	"auth-service-golang/const/paths"
 	"auth-service-golang/controllers"
 	"auth-service-golang/db/config"
 	"fmt"
@@ -16,8 +17,9 @@ var routes = []struct {
 	Method  string
 	Handler http.HandlerFunc
 }{
-	{"/login", httpMethods.Post, controllers.LoginHandler},
-	{"/verify", httpMethods.Get, controllers.VerifyTokenHandler},
+	{paths.Login, httpMethods.Post, controllers.LoginHandler},
+	{paths.Verify, httpMethods.Get, controllers.VerifyTokenHandler},
+	{paths.Batteries, httpMethods.Get, controllers.AllBatteriesHandler},
 }
 
 func SetupRouter() {
@@ -34,6 +36,6 @@ func SetupRouter() {
 
 	http.Handle("/", corsMiddleware.Handler(router))
 
-	fmt.Printf("Server is running on port %s...\n", config.Port)
+	fmt.Printf("Server is up and running on port %s...\n", config.Port)
 	log.Fatal(http.ListenAndServe(config.Port, nil))
 }

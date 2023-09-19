@@ -1,4 +1,4 @@
-package httpMethods
+package errorMessages
 
 const (
 	InvalidRequest      = "Invalid request"
@@ -6,4 +6,6 @@ const (
 	FailedToCreateToken = "Failed to create token"
 	TokenNotProvided    = "Token not provided"
 	InvalidToken        = "Invalid token"
+
+	BatteriesNoFound = "Batteries not found"
 )

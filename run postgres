@@ -1,0 +1,1 @@
+docker run --name gyrodata-db -e POSTGRES_PASSWORD=mysecretpassword -p 5434:5432 -d postgres:latest

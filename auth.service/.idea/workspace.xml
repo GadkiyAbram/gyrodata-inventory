@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b1ad3563-6cc4-45cf-93c9-d777b688e7dc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../backend/Structures/Battery.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/Structures/Ccd.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/Structures/Invoice.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/const/headers/headers.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/const/paths/auth.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/const/paths/batteries.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/controllers/BatteryController.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/models/battery/Battery.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/utils/SerializeModels.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/dataSources/f3c475b0-372f-450f-b56b-0db60acd2e2e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/dataSources/f3c475b0-372f-450f-b56b-0db60acd2e2e.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/Router/Router.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Router/Router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/const/errorMessages.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/const/errorMessages/errorMessages.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/const/httpMethods.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/const/httpMethods/httpMethods.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/controllers/LoginController.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/controllers/LoginController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/db/migrations/20230910113105_create_users_table.up.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/db/migrations/20230910113105_create_users_table.up.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/db/migrations/20230910114838_insert_first_user_into_users.down.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/db/migrations/20230910114838_insert_first_user_into_users.down.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/db/migrations/20230910114838_insert_first_user_into_users.up.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/db/migrations/20230910114838_insert_first_user_into_users.up.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/models/User.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/models/user/User.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/stores/BatteryStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/stores/BatteryStore.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file://$USER_HOME$/sdk/go1.20.5" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2VWxxaYtlXZXQDQMRlIvidnjTPy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/home/aleksandr/PROJECTS/MINE/gyrodata-ecosystem/auth.service",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
+      "PostgreSQL"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../backend/models/user" />
+      <recent name="$PROJECT_DIR$/../backend/models/battery" />
+      <recent name="$PROJECT_DIR$/../backend/const/httpMethods" />
+      <recent name="$PROJECT_DIR$/../backend/const/headers" />
+      <recent name="$PROJECT_DIR$/../backend/const/errorMessages" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>

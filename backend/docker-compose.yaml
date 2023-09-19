@@ -7,11 +7,11 @@ services:
     ports:
       - "8081:8081"
     environment:
-      - DB_SOURCE=postgresql://postgres:admin@postgres:5433/users?sslmode=disabled
+      - DB_SOURCE=postgresql://postgres:admin@postgres:5434/user?sslmode=disabled
 
   postgres:
     image: postgres:12-alpine
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=users
+      - POSTGRES_DB=user

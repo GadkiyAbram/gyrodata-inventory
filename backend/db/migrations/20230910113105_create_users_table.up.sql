@@ -1,3 +1,5 @@
+CREATE DATABASE "gyrodata-db";
+
 create table if not exists public.users
 (
     id       serial not null

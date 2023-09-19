@@ -1,8 +1,10 @@
 package controllers
 
 import (
-	errorMessages "auth-service-golang/const"
+	"auth-service-golang/const/errorMessages"
+	"auth-service-golang/const/headers"
 	"auth-service-golang/models"
+	"auth-service-golang/models/user"
 	"encoding/json"
 	"net/http"
 )
@@ -19,9 +21,9 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, errorMessages.InvalidRequest, http.StatusBadRequest)
 	}
 
-	user, _ := models.GetUserByEmail(loginRequest.Email, loginRequest.Password)
+	userCurrent, _ := user.GetUserByEmail(loginRequest.Email, loginRequest.Password)
 
-	if user == nil {
+	if userCurrent == nil {
 		http.Error(w, errorMessages.UserNotFound, http.StatusNotFound)
 	}
 
@@ -31,7 +33,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set(headers.ContentType, headers.ApplicationJson)
 	json.NewEncoder(w).Encode(map[string]string{"token": token})
 }
 
@@ -48,6 +50,6 @@ func VerifyTokenHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set(headers.ContentType, headers.ApplicationJson)
 	json.NewEncoder(w).Encode(claims)
 }
