@@ -1,10 +1,16 @@
 'use strict';
 
 const condition = {
-    NEW: 0,
-    USED: 1
+    NEW: 1,
+    USED: 0
+}
+
+const conditionColor = {
+    GREEN: 'green',
+    ORANGE: 'orange'
 }
 
 export {
-    condition
+    condition,
+    conditionColor
 }

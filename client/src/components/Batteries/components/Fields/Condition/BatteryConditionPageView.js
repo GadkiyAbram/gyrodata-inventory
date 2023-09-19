@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import useStyles from '../../../styles';
-import {condition} from '../../../../../enums/batteries';
+import {
+    condition,
+    conditionColor
+} from '../../../../../enums/batteries';
 
 const BatteryConditionPageView = (props) => {
     const classes = useStyles();
@@ -15,10 +18,17 @@ const BatteryConditionPageView = (props) => {
             className={classes.avatar}
             style={{
                 backgroundColor:
-                    ((row.condition === condition.NEW && 'green') ||
-                        (row.condition === condition.USED && 'orange'))
+                    ((row.condition === condition.NEW && conditionColor.GREEN) || conditionColor.ORANGE)
             }}
         />
+        // <div
+        //     className={classes.avatar}
+        //     style={{
+        //         backgroundColor:
+        //             ((row.condition === condition.NEW && conditionColor.GREEN) ||
+        //                 (row.condition === condition.USED && conditionColor.ORANGE))
+        //     }}
+        // />
     )
 }
 
