@@ -1,0 +1,6 @@
+GD-001	~01-09-2023
+* passed
+
+GD-002	19-09-2023
+ToDO:
+Create custom table component in order to have possibility to pass columns / data and to make it all reusable
