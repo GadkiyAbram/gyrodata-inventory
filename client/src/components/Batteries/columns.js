@@ -1,15 +1,12 @@
 import React from 'react';
 import BatteryInfo from './components/Fields/BatteryInfo';
+import BatteryEdit from "./components/Actions/Edit";
 
 const columns = [
   {
     title: 'Battery Info',
     key: 'serialOne',
-    format: (row) => <BatteryInfo row={row}/>
-  },
-  {
-    title: 'Transfer Info',
-    key: 'arrived'
+    format: (row) => <BatteryInfo serialOne={row} />
   },
   {
     title: 'Arrived Date',
@@ -30,6 +27,11 @@ const columns = [
   {
     title: 'Container',
     key: 'container'
+  },
+  {
+    title: 'Edit',
+    key: 'edit',
+    format: () => <BatteryEdit />
   }
 ];
 
